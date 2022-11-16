@@ -1,0 +1,40 @@
+{
+  "name": "t1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "local": "hardhat node",
+    "build": "hardhat compile",
+    "deploy": "hardhat run --network localhost scripts/deploy.js",
+    "admin": "hardhat run --network localhost scripts/adminRun.js",
+    "setprice": "hardhat run --network localhost scripts/setPrice.js",
+    "supplyeth": "hardhat run --network localhost operation_scripts/supplyETH.js",
+    "redeemeth": "hardhat run --network localhost operation_scripts/redeemETH.js",
+    "supplyerc": "hardhat run --network localhost operation_scripts/supplyErc20.js",
+    "redeemerc": "hardhat run --network localhost operation_scripts/redeemErc20.js",
+    "borroweth": "hardhat run --network localhost operation_scripts/borrowETH.js",
+    "borrowerc": "hardhat run --network localhost operation_scripts/borrowERC.js",
+    "repayeth": "hardhat run --network localhost operation_scripts/repayETH.js",
+    "repayerc": "hardhat run --network localhost operation_scripts/repayERC.js",
+    "checkbalance": "hardhat run --network localhost operation_scripts/checkbalance.js",
+    "checkbalanceLiquidator": "hardhat run --network localhost operation_scripts/checkbalanceLiquidator.js",
+    "transfer": "hardhat run --network localhost operation_scripts/transferJPT.js",
+    "onlyborroweth": "hardhat run --network localhost operation_scripts/onlyBorrowEth.js",
+    "makeliquid": "hardhat run --network localhost operation_scripts/makeLiquidity.js",
+    "callliquid": "hardhat run --network localhost operation_scripts/callLiquidity.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.8.0",
+    "chai": "^4.3.7",
+    "ethereum-waffle": "^3.4.4",
+    "evm-bn": "^1.1.2",
+    "hardhat": "^2.12.2",
+    "solidity-coverage": "^0.8.2"
+  }
+}
