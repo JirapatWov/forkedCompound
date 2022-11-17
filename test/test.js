@@ -110,8 +110,8 @@ describe("Compound", function () {
         let tx = await CEther.connect(player1).mint({
             value: ethers.utils.parseUnits('1', 'ether')
         });
-        let cETHBalance = await CEther.balanceOf(player1.address);
-        expect(tx).to.emit(CEther, "mint")
+        let cETHBalance = CEther.balanceOf(player1.address);
+        await expect(tx).to.emit(CEther, "Mint")
     });
 
     it("can supply JPT", async function () {
@@ -123,29 +123,29 @@ describe("Compound", function () {
             underlyingTokensToSupplyBN 
         );
         // Mint cTokens by supplying underlying tokens to the Compound Protocol
-        txJPT = await cJPT.connect(owner).mint(underlyingTokensToSupplyBN);
-        expect(txJPT).to.emit(cJPT, "mint")
+        txJPT = cJPT.connect(owner).mint(underlyingTokensToSupplyBN);
+        await expect(txJPT).to.emit(cJPT, "Mint")
     });
 
     it("can redeem ETH", async function () {
         const amountToRedeem = '1';
         const amountToRedeemBN = BigNumber.toBn(amountToRedeem, 8);
-        let txRedeem = await CEther.connect(player1).redeem(amountToRedeemBN);
-        expect(txRedeem).to.emit(CEther, "redeem")
+        let txRedeem = CEther.connect(player1).redeem(amountToRedeemBN);
+        await expect(txRedeem).to.emit(CEther, "Redeem")
     });
 
     it("can redeem JPT", async function () {
         const amountToRedeemJPT = '1';
         const amountToRedeemJPTBN = BigNumber.toBn(amountToRedeemJPT, 8);
-        let txRedeemJPT = await cJPT.connect(owner).redeem(amountToRedeemJPTBN);
-        expect(txRedeemJPT).to.emit(cJPT, "redeem")
+        let txRedeemJPT = cJPT.connect(owner).redeem(amountToRedeemJPTBN);
+        await expect(txRedeemJPT).to.emit(cJPT, "Redeem")
     });
 
     it("can borrow ETH", async function () {
         let markets = [CEther.address, cJPT.address];
         let enterMarkets = await comptroller.enterMarkets(markets);
-        let borrow = await CEther.connect(owner).borrow(ethers.utils.parseEther('0.35'));
-        expect(borrow).to.emit(CEther, "borrow")
+        let borrow = CEther.connect(owner).borrow(ethers.utils.parseEther('0.35'));
+        await expect(borrow).to.emit(CEther, "Borrow")
     });
 
     it("can borrow JPT", async function () {
@@ -153,8 +153,8 @@ describe("Compound", function () {
         let enterMarkets = await comptroller.connect(player1).enterMarkets(markets);
         const borrowA = '1.5';
         const borrowABN = BigNumber.toBn(borrowA, 18);
-        let borrowJPT = await cJPT.connect(player1).borrow(borrowABN);
-        expect(borrowJPT).to.emit(cJPT, "borrow")
+        let borrowJPT = cJPT.connect(player1).borrow(borrowABN);
+        await expect(borrowJPT).to.emit(cJPT, "Borrow")
     });
 
     it("can make Liquidity", async function () {
@@ -184,11 +184,11 @@ describe("Compound", function () {
             cJPT.address, 
             liquidityAmountFinal.toString()
         );
-        let txLiquid = await cJPT.connect(liquidator).liquidateBorrow(
+        let txLiquid = cJPT.connect(liquidator).liquidateBorrow(
             player1.address, 
             liquidityAmountFinal.toString(), 
             cJPT.address
         );
-        expect(txLiquid).to.emit(cJPT, "liquidateBorrow")
+        await expect(txLiquid).to.emit(cJPT, "LiquidateBorrow")
     });
   });
