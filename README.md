@@ -57,89 +57,9 @@ npm run admin // set defualt values
 npm run setprice // set your price in script first
 ```
 
-## Now you app is ready... let’s try using functions
+#### Now you app is ready...
 
-#### Try to supply some ETH
-```
-npm run supplyeth
-```
-location : operation_scripts/supplyETH.js
-#### Try to supply some JPT
-```
-npm run supplyerc
-```
-location : operation_scripts/supplyERC.js
-#### Try to redeem all ETH
-```
-npm run redeemeth
-```
-location : operation_scripts/redeemETH.js
-#### Try to redeem all JPT
-```
-npm run redeemerc
-```
-location : operation_scripts/redeemERC20.js
-#### Try to borrow some ETH
-```
-npm run borroweth
-```
-location : operation_scripts/borrowETH.js
-#### Try to borrow some JPT
-```
-npm run borrowerc
-```
-location : operation_scripts/borrowERC.js
-#### Try to repay some ETH
-```
-npm run repayeth
-```
-location : operation_scripts/repayETH.js
-#### Try to repay some JPT
-```
-npm run repayerc
-```
-location : operation_scripts/repayERC.js
-#### Try to borrow ETH without supply collateral
-```
-npm run onlyborroweth
-```
-location : operation_scripts/onlyBorrowEth.js
-#### Try to make liquidity situation
-```
-npm run makeliquid
-```
-location : operation_scripts/makeLiquidity.js
-#### Try to make liquidity situation
-```
-npm run makeliquid
-```
-location : operation_scripts/makeLiquidity.js
-#### Try to transfer JPT
-```
-npm run transfer
-```
-location : operation_scripts/transferJPT.js
-#### Try to call liquidity
-```
-npm run callliquid
-```
-location : operation_scripts/callLiquidity.js
-#### Try to check balance of main account
-```
-npm run checkbalance
-```
-location : operation_scripts/checkbalance.js
-#### Try to check liquidator’s balance
-```
-npm run checkbalanceliquidator
-```
-location : operation_scripts/checkBalanceLiquidator.js
-
-
-> if you want to test liquidity you need to run onlyborroweth to make your liquidity as low as possible (use checkbalance to checck your liquidity) then run makeliquid to drop JPT’s price by half. Now main account is underwater. After that, run transfer to transfer JPT to liquidator account and then callliquid to make liquidity
-
-
-> Don’t forget to supply token to contract before run borrow function
+> You can try playing with functions with test script
 
 
 have a nice day...
